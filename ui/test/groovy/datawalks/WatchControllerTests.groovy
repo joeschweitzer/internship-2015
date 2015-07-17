@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@WebIntegrationTest("server.port:9000")
 @ActiveProfiles("mock")
 class WatchControllerTests {
 	RestTemplate restTemplate = new TestRestTemplate()
@@ -23,7 +23,7 @@ class WatchControllerTests {
 
 	@Test
 	public void testRequest() throws Exception {
-		ResponseEntity entity = restTemplate.getForEntity("http://localhost:8080/watch/deviceIds", String.class)
+		ResponseEntity entity = restTemplate.getForEntity("http://localhost:9000/watch/deviceIds", String.class)
 		assertTrue(slurper.parseText(entity.getBody()) == [rows: [[device: 1]]])
 	}
 }
