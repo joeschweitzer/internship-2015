@@ -1,8 +1,9 @@
 package datawalks.controller
 
+import javax.annotation.Resource
+
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -14,7 +15,7 @@ import datawalks.service.SqlService
 class WatchController {
 	private static final Logger logger = LoggerFactory.getLogger(WatchController.class)
 
-	@Autowired SqlService sqlService
+	@Resource def sqlService
 
 	@RequestMapping("/watch/aggPoints")
 	public def aggPoints(@RequestParam(value = "id", required = false, defaultValue = "0") long id,

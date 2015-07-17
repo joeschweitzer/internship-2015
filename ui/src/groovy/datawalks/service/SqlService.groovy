@@ -1,11 +1,15 @@
 package datawalks.service
 
 import groovy.sql.Sql
+
 import javax.sql.DataSource
+
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
+@Profile("default")
 class SqlService {
 	@Autowired DataSource dataSource
 	

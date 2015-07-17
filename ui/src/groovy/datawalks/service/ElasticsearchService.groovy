@@ -1,11 +1,12 @@
 package datawalks.service
 
-import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
+@Profile("default")
 class ElasticsearchService {
 	def url = "http://172.31.62.129:9200/twitter/tweet/";
 
