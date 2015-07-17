@@ -24,6 +24,6 @@ class WatchControllerTests {
 	@Test
 	public void testRequest() throws Exception {
 		ResponseEntity entity = restTemplate.getForEntity("http://localhost:9000/watch/deviceIds", String.class)
-		assertTrue(slurper.parseText(entity.getBody()) == [rows: [[device: 1]]])
+		assertTrue(slurper.parseText(entity.getBody()) == [rows: [[device: 2]]])
 	}
 }
