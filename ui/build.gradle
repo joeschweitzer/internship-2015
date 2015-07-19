@@ -4,7 +4,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-		classpath 'org.springframework:springloaded:1.2.1.RELEASE'
+		classpath 'org.springframework:springloaded:1.2.3.RELEASE'
 	}
 }
 
@@ -12,6 +12,7 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 repositories {
 	mavenCentral()
@@ -33,6 +34,9 @@ dependencies {
 	testCompile 'org.hamcrest:hamcrest-all:1.3'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework:spring-test:4.1.1.RELEASE'
+	
+	
+	runtime 'org.springframework:springloaded:1.2.3.RELEASE'
 }
 
 eclipse {
@@ -81,7 +85,25 @@ bootRun {
     ]
 }
 
-jar {
-	baseName = 'datawalks'
-	version = '1.0'
+group = 'datawalks'
+version = '1.0'
+archivesBaseName = 'datawalks'
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			repository(url: "http://192.168.99.100:32770/artifactory/libs-release-local") {
+				authentication(userName: "xyz", password: "xyz")
+			}
+			pom {
+				project {
+					parent {
+						groupId "org.springframework.boot"
+						artifactId "spring-boot-starter-parent"
+						version "1.2.3.RELEASE"
+					}
+				}
+			}
+        }
+    }
 }
