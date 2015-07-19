@@ -14,7 +14,7 @@ import datawalks.service.ElasticsearchService
 class TwitterController {
 	private static final Logger logger = LoggerFactory.getLogger(TwitterController.class)
 
-	@Resource def esService
+	@Resource ElasticsearchService esService
 
 	@RequestMapping("/twitter/getTweets")
 	public def getTweets(@RequestParam(value = "latitude", required = false) String latitude,

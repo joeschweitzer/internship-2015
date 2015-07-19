@@ -15,7 +15,7 @@ import datawalks.service.SqlService
 class WatchController {
 	private static final Logger logger = LoggerFactory.getLogger(WatchController.class)
 
-	@Resource def sqlService
+	@Resource SqlService sqlService
 
 	@RequestMapping("/watch/aggPoints")
 	public def aggPoints(@RequestParam(value = "id", required = false, defaultValue = "0") long id,
